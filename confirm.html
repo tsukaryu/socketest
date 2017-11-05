@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>Socket.ioの練習</title>
+</head>
+<body>
+	<form id="myForm" action="index">
+		<input type="submit" value="confirm!">
+	</form>	
+	<ul id="logs"></ul>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+	 $(function() {
+		var socket = io.connect();
+		socket.on('emit_from_server', function(data){
+			$('#logs').append($('<li>').text(data));
+		});
+	 });
+	</script>
+</body>
+</html>
